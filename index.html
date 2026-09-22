@@ -1,647 +1,336 @@
 <!DOCTYPE html>
-<html lang="th" class="scroll-smooth">
-<head> 
+<html lang="th">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wannapa.studio | Portfolio & Contact</title>
+    <title>Wannapa.studio - สตูดิโอดีไซน์งานป้ายเเละเว็บคัสตอม</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Google Fonts: Prompt & Kanit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        * {
-            font-family: 'Prompt', 'Kanit', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fdf2f8;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 214, 231, 0.7) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(254, 226, 226, 0.7) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(252, 231, 243, 0.5) 0%, transparent 60%);
+            background-attachment: fixed;
         }
 
-        /* Pastel Pink Fluffy/Cat Fur Hair Texture Effect for Header Text */
-        .fur-text {
-            background-color: #ffb7c5;
-            background-image: 
-                radial-gradient(circle at 50% 50%, #ffe4e1 10%, transparent 20%),
-                radial-gradient(circle at 20% 20%, #ffc0cb 15%, transparent 25%),
-                radial-gradient(circle at 80% 80%, #fbcce7 15%, transparent 30%),
-                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.4) 0px, rgba(255, 255, 255, 0.4) 2px, transparent 2px, transparent 4px),
-                repeating-linear-gradient(-45deg, rgba(255, 182, 193, 0.6) 0px, rgba(255, 182, 193, 0.6) 1px, transparent 1px, transparent 3px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 6px 6px, 8px 8px;
+        .font-mali {
+            font-family: 'Mali', cursive;
+        }
+
+        /* Pastel Pink Cat Fur Hair Texture Effect */
+        .cat-fur-texture {
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 60%),
+                repeating-radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.4) 0px, transparent 2px, transparent 4px),
+                repeating-radial-gradient(circle at 80% 70%, rgba(244, 114, 182, 0.3) 0px, transparent 2px, transparent 5px),
+                linear-gradient(135deg, #fbcfe8 0%, #f472b6 50%, #f43f5e 100%);
+            background-blend-mode: overlay, soft-light, overlay, normal;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(244, 114, 182, 0.25);
+        }
+
+        /* Fur strands animation simulation */
+        .cat-fur-text {
+            background: linear-gradient(180deg, #ffffff 0%, #ffe4e6 40%, #fbcfe8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0 0 12px rgba(255, 182, 193, 0.8),
-                2px 2px 0px rgba(255, 105, 180, 0.3),
-                -1px -1px 0px rgba(255, 255, 255, 0.9);
-            filter: drop-shadow(0px 8px 15px rgba(255, 140, 180, 0.35));
+            filter: drop-shadow(0px 4px 8px rgba(190, 24, 93, 0.35))
+                    drop-shadow(0px 1px 2px rgba(255, 255, 255, 0.8));
             position: relative;
             display: inline-block;
         }
 
-        /* Soft Animated Fur Aura Glow */
-        .fur-text::after {
-            content: '';
+        .cat-fur-text::after {
+            content: "Wannapa.studio";
             position: absolute;
-            inset: -10px;
-            background: radial-gradient(circle, rgba(255,192,203,0.4) 0%, rgba(255,228,225,0) 70%);
+            left: 0;
+            top: 0;
             z-index: -1;
-            filter: blur(10px);
-            animation: pulseGlow 3s infinite alternate;
+            background: linear-gradient(45deg, #f472b6, #fb7185);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: blur(4px);
+            opacity: 0.7;
         }
 
-        @keyframes pulseGlow {
-            0% { transform: scale(0.98); opacity: 0.6; }
-            100% { transform: scale(1.03); opacity: 0.9; }
+        .fur-badge {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.15);
         }
 
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
+        .pastel-card {
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 2px solid rgba(255, 218, 224, 0.8);
+            border: 2px solid #fbcfe8;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* Cute Fluffy Floating Animation */
-        @keyframes floatCute {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(1deg); }
+        .pastel-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(244, 114, 182, 0.2);
+            border-color: #f472b6;
         }
 
-        .animate-float {
-            animation: floatCute 4s ease-in-out infinite;
+        .btn-pastel {
+            background: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
+            color: white;
+            box-shadow: 0 4px 14px rgba(244, 114, 182, 0.4);
+            transition: all 0.2s ease;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fff0f5;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #f4a6be;
-            border-radius: 99px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #e88ab0;
+        .btn-pastel:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.6);
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 min-h-screen text-gray-700 relative overflow-x-hidden">
-
-    <!-- Background Floating Paws & Soft Bokeh -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div class="absolute top-10 left-10 text-pink-200 opacity-40 animate-float"><i data-lucide="paw-print" class="w-20 h-20"></i></div>
-        <div class="absolute top-1/3 right-12 text-rose-200 opacity-40 animate-float" style="animation-delay: 1.5s;"><i data-lucide="paw-print" class="w-16 h-16"></i></div>
-        <div class="absolute bottom-20 left-1/4 text-pink-200 opacity-30 animate-float" style="animation-delay: 2.5s;"><i data-lucide="heart" class="w-24 h-24"></i></div>
-        <div class="absolute top-10 right-1/3 w-72 h-72 bg-pink-200/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 left-10 w-96 h-96 bg-rose-200/30 rounded-full blur-3xl"></div>
-    </div>
+<body class="min-h-screen flex flex-col justify-between text-pink-950 antialiased">
 
     <!-- HEADER SECTION -->
-    <header class="relative z-10 pt-12 pb-8 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <!-- Fluffy Cat Ears Icon Badge -->
-            <div class="inline-flex items-center gap-2 bg-pink-100/80 border border-pink-200 text-pink-500 px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm backdrop-blur-md animate-bounce">
-                <i data-lucide="sparkles" class="w-4 h-4"></i>
-                <span>ยินดีต้อนรับสู่สตูดิโอของเรา 🐾</span>
-                <i data-lucide="heart" class="w-4 h-4 fill-pink-400 text-pink-400"></i>
+    <header class="relative pt-12 pb-16 px-4 text-center overflow-hidden">
+        <!-- Floating Decorative Element -->
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-full max-w-4xl flex justify-between px-8 opacity-40 pointer-events-none">
+            <i data-lucide="sparkles" class="w-8 h-8 text-pink-400 animate-pulse"></i>
+            <i data-lucide="heart" class="w-6 h-6 text-pink-300 animate-bounce"></i>
+            <i data-lucide="sparkles" class="w-10 h-10 text-pink-400 animate-pulse"></i>
+        </div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <!-- Fur Header Container -->
+            <div class="cat-fur-texture rounded-3xl p-8 mb-6 border-4 border-white/60">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full fur-badge mb-3">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-pink-500"></i>
+                    <span class="text-xs font-medium text-pink-700 tracking-wider">WELCOME TO OUR STUDIO</span>
+                </div>
+                
+                <!-- Main Title with Pastel Pink Fur Texture -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-mali tracking-tight py-2 cat-fur-text drop-shadow-md">
+                    Wannapa.studio
+                </h1>
             </div>
 
-            <!-- Title: Wannapa.studio with Pink Fur Texture -->
-            <h1 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight mb-4 select-none fur-text py-2">
-                Wannapa.studio
-            </h1>
-
-            <!-- Catchphrase Card -->
-            <div class="mt-6 max-w-2xl mx-auto glass-card p-6 rounded-3xl shadow-lg shadow-pink-100/50 hover:shadow-xl transition-all duration-300 relative group">
-                <div class="absolute -top-3 -left-3 bg-pink-300 text-white p-2 rounded-full shadow-md group-hover:scale-110 transition-transform">
-                    <i data-lucide="message-circle-heart" class="w-5 h-5"></i>
-                </div>
-                <p class="text-base sm:text-lg text-pink-700/90 leading-relaxed font-normal pt-1">
-                    “ ลูกค้าท่านใดที่สงสัยสามารถติดต่อสอบถามส่วนตัวได้ค่ะ และสามารถส่งผลงานของทางร้านต่างๆได้ในนี้เลยค่ะ ”
+            <!-- Tagline Card -->
+            <div class="fur-badge rounded-2xl p-5 md:p-6 text-center max-w-2xl mx-auto">
+                <p class="text-sm md:text-base text-pink-800 leading-relaxed font-normal">
+                    “ ลูกค้าท่านใดที่สงสัยสามารถติดต่อสอบถามส่วนตัวได้ค่ะ และสามารถส่งผลงานของทางร้านต่างๆ ได้ในนี้เลยค่ะ ”
                 </p>
-                
-                <!-- Action Buttons in Header -->
-                <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
-                    <button onclick="scrollToSection('contact')" class="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-md shadow-pink-200 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-                        <i data-lucide="message-square" class="w-4 h-4"></i>
-                        สอบถามงานส่วนตัว
-                    </button>
-                    <button onclick="openSubmitModal()" class="bg-white/80 hover:bg-white text-pink-600 border border-pink-300 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-                        <i data-lucide="upload-cloud" class="w-4 h-4"></i>
-                        ส่งงาน / ฝากผลงาน
-                    </button>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- MAIN BODY SECTION -->
-    <main class="relative z-10 max-w-6xl mx-auto px-4 py-8">
+    <!-- BODY SECTION -->
+    <main class="max-w-5xl mx-auto px-4 pb-12 w-full flex-grow">
         
-        <!-- Category Title -->
-        <div class="flex items-center justify-between mb-8">
-            <div class="flex items-center gap-3">
-                <div class="w-3 h-8 bg-gradient-to-b from-pink-400 to-rose-400 rounded-full"></div>
-                <h2 class="text-2xl sm:text-3xl font-bold text-pink-800">บริการและผลงานของเรา</h2>
-            </div>
-            <span class="text-xs sm:text-sm text-pink-500 bg-pink-100/70 px-3 py-1 rounded-full border border-pink-200">
-                ✨ Pastel Cute Style
-            </span>
+        <div class="flex items-center gap-3 mb-6">
+            <div class="w-3 h-8 bg-pink-400 rounded-full"></div>
+            <h2 class="text-2xl font-bold text-pink-900 font-mali">บริการและผลงานของเรา</h2>
+            <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full font-medium border border-pink-200">Pastel Cute Style</span>
         </div>
 
-        <!-- GRID CONTAINER FOR SERVICES & PORTFOLIO -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 2 Grid Blocks -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             
-            <!-- BLOCK 1: Ex ป้าย (ตัวอย่างงาน) -->
-            <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl shadow-pink-100/60 hover:shadow-2xl hover:shadow-pink-200/50 transition-all duration-300 relative flex flex-col justify-between border-2 border-pink-200/80 group">
+            <!-- Block 1: Ex ป้าย (ตัวอย่างงาน) -->
+            <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
-                    <!-- Badge Header -->
                     <div class="flex items-center justify-between mb-4">
-                        <span class="bg-pink-100 text-pink-600 text-xs font-semibold px-3 py-1 rounded-full border border-pink-200 flex items-center gap-1">
+                        <span class="text-xs font-semibold px-3 py-1 bg-pink-100 text-pink-600 rounded-full flex items-center gap-1">
                             <i data-lucide="image" class="w-3.5 h-3.5"></i> Showcase Gallery
                         </span>
-                        <div class="w-10 h-10 rounded-2xl bg-pink-200/60 flex items-center justify-center text-pink-600 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                            <i data-lucide="layout-grid" class="w-5 h-5"></i>
-                        </div>
+                        <i data-lucide="layout-grid" class="w-5 h-5 text-pink-400"></i>
                     </div>
 
-                    <!-- Title & Desc -->
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-                        Ex ป้าย 
-                        <span class="text-sm font-normal text-pink-600 bg-pink-50 px-2.5 py-0.5 rounded-lg border border-pink-100">(ตัวอย่างงาน)</span>
+                    <h3 class="text-2xl font-bold text-pink-900 mb-2 font-mali flex items-center gap-2">
+                        Ex ป้าย <span class="text-sm font-normal text-pink-500">(ตัวอย่างงาน)</span>
                     </h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                    
+                    <p class="text-pink-700 text-sm mb-4 leading-relaxed">
                         รวบรวมผลงานออกแบบป้ายสินค้า ป้ายโปรโมชั่น ป้ายเครดิต และกราฟิกสไตล์พาสเทลน่ารัก สดใส เพิ่มยอดขายให้กับร้านค้าของคุณ
                     </p>
 
-                    <!-- Sample Image Mini Grid -->
-                    <div class="grid grid-cols-3 gap-3 mb-6">
-                        <div onclick="openGalleryModal(0)" class="aspect-square bg-pink-100 rounded-2xl overflow-hidden cursor-pointer relative group/img border border-pink-200 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&auto=format&fit=crop&q=80" alt="Banner Sample 1" class="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400/ffb7c5/ffffff?text=Ex+Banner+1'">
-                            <div class="absolute inset-0 bg-pink-900/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white">
-                                <i data-lucide="zoom-in" class="w-5 h-5"></i>
-                            </div>
+                    <!-- Image Thumbnails Grid -->
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 1">
                         </div>
-                        <div onclick="openGalleryModal(1)" class="aspect-square bg-pink-100 rounded-2xl overflow-hidden cursor-pointer relative group/img border border-pink-200 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400&auto=format&fit=crop&q=80" alt="Banner Sample 2" class="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400/ffc0cb/ffffff?text=Ex+Banner+2'">
-                            <div class="absolute inset-0 bg-pink-900/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white">
-                                <i data-lucide="zoom-in" class="w-5 h-5"></i>
-                            </div>
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 2">
                         </div>
-                        <div onclick="openGalleryModal(2)" class="aspect-square bg-pink-100 rounded-2xl overflow-hidden cursor-pointer relative group/img border border-pink-200 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&auto=format&fit=crop&q=80" alt="Banner Sample 3" class="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400/fbcce7/ffffff?text=Ex+Banner+3'">
-                            <div class="absolute inset-0 bg-pink-900/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white">
-                                <i data-lucide="zoom-in" class="w-5 h-5"></i>
-                            </div>
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 3">
                         </div>
                     </div>
 
                     <!-- Tags -->
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs bg-rose-100/80 text-rose-600 px-2.5 py-1 rounded-md font-medium">#ป้ายลายน้ำ</span>
-                        <span class="text-xs bg-pink-100/80 text-pink-600 px-2.5 py-1 rounded-md font-medium">#ป้ายโปรโมชั่น</span>
-                        <span class="text-xs bg-fuchsia-100/80 text-fuchsia-600 px-2.5 py-1 rounded-md font-medium">#โลโก้พาสเทล</span>
+                    <div class="flex flex-wrap gap-1.5 mb-6">
+                        <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#ป้ายลายน้ำ</span>
+                        <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#ป้ายโปรโมชั่น</span>
+                        <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#โลโก้พาสเทล</span>
                     </div>
                 </div>
 
-                <!-- Footer Action -->
-                <button onclick="openGalleryModal(0)" class="w-full bg-gradient-to-r from-pink-300 to-rose-300 hover:from-pink-400 hover:to-rose-400 text-pink-900 font-semibold py-3 rounded-2xl transition-all shadow-md shadow-pink-100 flex items-center justify-center gap-2 group-hover:shadow-lg">
-                    <i data-lucide="eye" class="w-4 h-4"></i>
-                    ดูตัวอย่างผลงานทั้งหมด
-                </button>
+                <!-- Direct Google Drive Link Button -->
+                <a href="YOUR_GOOGLE_DRIVE_BANNER_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
+                    <i data-lucide="folder-open" class="w-4 h-4"></i>
+                    ดูตัวอย่างผลงานป้ายทั้งหมด (Google Drive)
+                </a>
             </div>
 
-            <!-- BLOCK 2: Custom web (คัสตอมเว็บ) -->
-            <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl shadow-pink-100/60 hover:shadow-2xl hover:shadow-pink-200/50 transition-all duration-300 relative flex flex-col justify-between border-2 border-pink-200/80 group">
+            <!-- Block 2: Custom web (คัสตอมเว็บ) -->
+            <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
-                    <!-- Badge Header -->
                     <div class="flex items-center justify-between mb-4">
-                        <span class="bg-rose-100 text-rose-600 text-xs font-semibold px-3 py-1 rounded-full border border-rose-200 flex items-center gap-1">
-                            <i data-lucide="code" class="w-3.5 h-3.5"></i> Web Development
+                        <span class="text-xs font-semibold px-3 py-1 bg-pink-100 text-pink-600 rounded-full flex items-center gap-1">
+                            <i data-lucide="laptop" class="w-3.5 h-3.5"></i> Web Portfolio
                         </span>
-                        <div class="w-10 h-10 rounded-2xl bg-rose-200/60 flex items-center justify-center text-rose-600 group-hover:scale-110 group-hover:-rotate-6 transition-all">
-                            <i data-lucide="laptop" class="w-5 h-5"></i>
+                        <i data-lucide="globe" class="w-5 h-5 text-pink-400"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-pink-900 mb-2 font-mali flex items-center gap-2">
+                        Custom web <span class="text-sm font-normal text-pink-500">(ตัวอย่างเว็บ)</span>
+                    </h3>
+                    
+                    <p class="text-pink-700 text-sm mb-4 leading-relaxed">
+                        ตัวอย่างเว็บไซต์คัสตอมที่เราออกแบบ รับทำเว็บบอร์ด เว็บลิงก์ชีวประวัติ (Bio) หน้าโปรไฟล์ และเว็บร้านค้าออนไลน์ สไตล์หวานพาสเทล
+                    </p>
+
+                    <!-- Image Thumbnails Grid -->
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 1">
+                        </div>
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 2">
+                        </div>
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 3">
                         </div>
                     </div>
 
-                    <!-- Title & Desc -->
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-                        Custom web 
-                        <span class="text-sm font-normal text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-lg border border-rose-100">(คัสตอมเว็บ)</span>
-                    </h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                        รับทำเว็บไซต์ตามสั่ง ออกแบบดีไซน์เฉพาะตัว รองรับมือถือ 100% เหมาะสำหรับเว็บบอร์ด เว็บลิงก์ชีวประวัติ (Bio) และเว็บหน้าร้านออนไลน์
-                    </p>
-
-                    <!-- Feature List -->
-                    <div class="space-y-2.5 mb-6">
-                        <div class="flex items-center gap-2.5 text-sm text-gray-700 bg-white/60 p-2.5 rounded-xl border border-pink-100">
-                            <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-500 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <span>ออกแบบ UI/UX โทนสีพาสเทลสวยงาม มินิมอล</span>
-                        </div>
-                        <div class="flex items-center gap-2.5 text-sm text-gray-700 bg-white/60 p-2.5 rounded-xl border border-pink-100">
-                            <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-500 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <span>รองรับมือถือ แท็บเล็ต และคอมพิวเตอร์ (Responsive)</span>
-                        </div>
-                        <div class="flex items-center gap-2.5 text-sm text-gray-700 bg-white/60 p-2.5 rounded-xl border border-pink-100">
-                            <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-500 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <span>เชื่อมต่อระบบปุ่มติดต่อ โซเชียลมีเดียครบครัน</span>
-                        </div>
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-1.5 mb-6">
+                        <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#เว็บไซต์ร้านค้า</span>
+                        <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#คัสตอมพอร์ต</span>
+                        <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#เว็บลิงก์Bio</span>
                     </div>
                 </div>
 
-                <!-- Footer Action -->
-                <button onclick="openWebCalcModal()" class="w-full bg-gradient-to-r from-rose-400 to-pink-400 hover:from-rose-500 hover:to-pink-500 text-white font-semibold py-3 rounded-2xl transition-all shadow-md shadow-pink-200 flex items-center justify-center gap-2 group-hover:shadow-lg">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                    ประเมินราคา & สอบถามสร้างเว็บ
-                </button>
+                <!-- Direct Google Drive Link Button -->
+                <a href="YOUR_GOOGLE_DRIVE_WEB_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
+                    <i data-lucide="folder-open" class="w-4 h-4"></i>
+                    ดูตัวอย่างเว็บไซต์ทั้งหมด (Google Drive)
+                </a>
             </div>
 
         </div>
 
-        <!-- SUBMISSION BANNER (Context: สามารถส่งผลงานของทางร้านต่างๆได้ในนี้เลยค่ะ) -->
-        <div class="mt-10 glass-card rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-pink-100/90 via-rose-100/80 to-pink-200/90 border-2 border-pink-300/70 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="space-y-2 text-center md:text-left">
-                <span class="inline-block bg-white/80 text-pink-600 text-xs font-semibold px-3 py-1 rounded-full border border-pink-200">
-                    <i data-lucide="send" class="w-3 h-3 inline mr-1"></i> Fast Delivery System
-                </span>
-                <h3 class="text-xl sm:text-2xl font-bold text-pink-900">
-                    ต้องการส่งผลงานหรือไฟล์งานให้ทางร้าน?
-                </h3>
-                <p class="text-pink-700 text-sm max-w-xl">
-                    คุณลูกค้าที่สั่งทำสคริปต์ ป้าย หรือเว็บ สามารถอัปโหลดรายละเอียดและส่งไฟล์งานตรงถึงทีมงาน Wannapa.studio ได้สะดวกรวดเร็วผ่านระบบนี้
-                </p>
+        <!-- QUEUE CHECK SECTION (เช็คคิวงาน / ชีทงาน) -->
+        <div class="pastel-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-pink-100/90 via-pink-50/80 to-pink-100/90 border-2 border-pink-300">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-center md:text-left">
+                    <span class="text-xs font-semibold px-3 py-1 bg-pink-200 text-pink-700 rounded-full inline-flex items-center gap-1 mb-3">
+                        <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i> Live Order Tracker
+                    </span>
+                    <h3 class="text-2xl md:text-3xl font-bold text-pink-900 font-mali mb-2">
+                        เช็คคิวงาน / ชีทงาน
+                    </h3>
+                    <p class="text-pink-700 text-sm max-w-lg leading-relaxed">
+                        ลูกค้าสามารถตรวจสอบสถานะคิวงาน ลำดับการจัดทำ และตารางชีทงานอัปเดตแบบเรียลไทม์ได้ตลอด 24 ชั่วโมงที่นี่ค่ะ
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <a href="YOUR_GOOGLE_SHEET_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel py-3.5 px-6 rounded-2xl font-medium text-center flex items-center justify-center gap-2 whitespace-nowrap">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        เปิดดูชีทงาน (Google Sheet)
+                    </a>
+                </div>
             </div>
-            <button onclick="openSubmitModal()" class="bg-pink-600 hover:bg-pink-700 text-white font-medium px-6 py-3.5 rounded-2xl shadow-lg shadow-pink-300/50 transition-all transform hover:scale-105 flex items-center gap-2 flex-shrink-0">
-                <i data-lucide="upload" class="w-5 h-5"></i>
-                คลิกเพื่อส่งผลงาน / ไฟล์งาน
-            </button>
         </div>
 
     </main>
 
     <!-- FOOTER SECTION (ช่องทางติดต่อ) -->
-    <footer id="contact" class="relative z-10 bg-white/80 backdrop-blur-xl border-t border-pink-200/80 mt-16 pt-12 pb-10 px-4">
-        <div class="max-w-5xl mx-auto">
+    <footer class="bg-white/80 backdrop-blur-md border-t-2 border-pink-200 pt-10 pb-8 px-4 mt-auto">
+        <div class="max-w-4xl mx-auto text-center">
             
-            <!-- Section Header -->
-            <div class="text-center mb-10">
-                <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-xs font-semibold mb-3">
-                    <i data-lucide="phone-call" class="w-3.5 h-3.5"></i> CONTACT US
-                </div>
-                <h2 class="text-3xl font-extrabold text-gray-800">ช่องทางติดต่อร้าน</h2>
-                <p class="text-pink-600 text-sm mt-1">สามารถทักสอบถาม ยินดีให้คำปรึกษาตลอดเวลาค่ะ 💕</p>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 text-xs font-semibold mb-3">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5"></i> CONTACT US
             </div>
+            
+            <h3 class="text-2xl md:text-3xl font-bold font-mali text-pink-900 mb-2">
+                ช่องทางติดต่อร้าน
+            </h3>
+            <p class="text-pink-600 text-sm mb-8">สามารถทักสอบถาม ยินดีให้คำปรึกษาตลอดเวลาค่ะ 💕</p>
 
-            <!-- Contact Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <!-- Contact Buttons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 
-                <!-- 1. Facebook -->
-                <a href="https://facebook.com" target="_blank" class="glass-card p-6 rounded-2xl hover:bg-white transition-all duration-300 border border-pink-200 hover:border-blue-300 shadow-sm hover:shadow-md group flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="facebook" class="w-7 h-7"></i>
+                <!-- Facebook -->
+                <a href="https://facebook.com" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs text-pink-500 font-medium">Facebook Page</div>
+                            <div class="text-sm font-bold text-pink-900">Wannapa.studio</div>
+                        </div>
                     </div>
-                    <h4 class="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">Facebook</h4>
-                    <p class="text-xs text-gray-500 mt-1 mb-4">เพจหลักสำหรับติดตามข่าวสารและผลงาน</p>
-                    <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full font-medium border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        ทักแชท Facebook Page
-                    </span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
                 </a>
 
-                <!-- 2. Line Official -->
-                <div class="glass-card p-6 rounded-2xl hover:bg-white transition-all duration-300 border border-pink-200 hover:border-emerald-300 shadow-sm hover:shadow-md group flex flex-col items-center text-center relative">
-                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="message-circle" class="w-7 h-7"></i>
+                <!-- Line Official -->
+                <a href="https://line.me" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs text-pink-500 font-medium">Line Official</div>
+                            <div class="text-sm font-bold text-pink-900">@wannapa.studio</div>
+                        </div>
                     </div>
-                    <h4 class="font-bold text-gray-800 text-lg group-hover:text-emerald-600 transition-colors">Line Official</h4>
-                    <p class="text-xs text-gray-500 mt-1 mb-2">ช่องทางสอบถามส่วนตัว & สั่งซื้อ</p>
-                    <div class="bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100 text-xs text-emerald-700 font-mono mb-3">
-                        @wannapa.studio
-                    </div>
-                    <button onclick="copyLineId('@wannapa.studio')" class="w-full text-xs bg-emerald-500 hover:bg-emerald-600 text-white py-2 rounded-xl font-medium transition-colors flex items-center justify-center gap-1.5">
-                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                        คัดลอก Line ID
-                    </button>
-                </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
+                </a>
 
-                <!-- 3. Admin Groups -->
-                <a href="#admin-groups" onclick="showGroupModal()" class="glass-card p-6 rounded-2xl hover:bg-white transition-all duration-300 border border-pink-200 hover:border-rose-300 shadow-sm hover:shadow-md group flex flex-col items-center text-center">
-                    <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="users" class="w-7 h-7"></i>
+                <!-- Group Admin -->
+                <a href="#" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs text-pink-500 font-medium">กลุ่มที่เเอดมินดูเเล</div>
+                            <div class="text-sm font-bold text-pink-900">เข้ากลุ่มอัปเดตงาน</div>
+                        </div>
                     </div>
-                    <h4 class="font-bold text-gray-800 text-lg group-hover:text-rose-600 transition-colors">กลุ่มที่แอดมินดูแล</h4>
-                    <p class="text-xs text-gray-500 mt-1 mb-4">เข้ากลุ่มพูดคุย อัปเดตงาน และแบ่งปันไอเดีย</p>
-                    <span class="text-xs bg-rose-50 text-rose-600 px-3 py-1.5 rounded-full font-medium border border-rose-100 group-hover:bg-rose-500 group-hover:text-white transition-colors">
-                        ดูรายชื่อกลุ่มทั้งหมด
-                    </span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
                 </a>
 
             </div>
 
-            <!-- Footer Bottom -->
-            <div class="pt-8 border-t border-pink-100 text-center text-xs text-pink-400 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
-                    <span>Wannapa.studio • Pastel Fur Theme Portfolio</span>
-                </div>
-                <p>© 2026 Wannapa.studio. All rights reserved.</p>
+            <!-- Copyright -->
+            <div class="pt-6 border-t border-pink-100 text-xs text-pink-400 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <span>© 2026 Wannapa.studio. All rights reserved.</span>
+                <span class="font-mali flex items-center gap-1">Crafted with <i data-lucide="heart" class="w-3 h-3 text-pink-500 fill-pink-500"></i> Pastel Cute Style</span>
             </div>
         </div>
     </footer>
 
-    
-    <!-- MODAL 1: EX ป้าย (GALLERY MODAL) -->
-    <div id="galleryModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl border-2 border-pink-200 relative animate-float">
-            <button onclick="closeModal('galleryModal')" class="absolute top-4 right-4 w-9 h-9 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full flex items-center justify-center transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <h3 class="text-2xl font-bold text-gray-800 mb-1 flex items-center gap-2">
-                <i data-lucide="image" class="w-6 h-6 text-pink-500"></i>
-                ตัวอย่างผลงานออกแบบป้าย (Ex ป้าย)
-            </h3>
-            <p class="text-xs text-gray-500 mb-6">คลิกดูภาพขยายตัวอย่างผลงานกราฟิกและป้ายโฆษณา</p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div class="bg-pink-50 p-3 rounded-2xl border border-pink-100">
-                    <img id="modalGalleryImg" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80" alt="Large Preview" class="w-full h-56 object-cover rounded-xl mb-2">
-                    <p class="text-xs font-semibold text-pink-700 text-center">ตัวอย่างที่ 1: ป้ายสินค้าโปรโมชั่นสุดน่ารัก</p>
-                </div>
-                <div class="space-y-2">
-                    <div onclick="setModalImg('https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80', 'ตัวอย่างที่ 1: ป้ายสินค้าโปรโมชั่นสุดน่ารัก')" class="p-3 bg-pink-50/60 hover:bg-pink-100/80 rounded-xl cursor-pointer border border-pink-100 flex items-center gap-3 transition-colors">
-                        <div class="w-12 h-12 rounded-lg bg-pink-200 overflow-hidden flex-shrink-0">
-                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=200&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-800">ป้ายสินค้าโปรโมชั่น</p>
-                            <span class="text-[10px] text-pink-500">สไตล์หวานพาสเทล</span>
-                        </div>
-                    </div>
-
-                    <div onclick="setModalImg('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80', 'ตัวอย่างที่ 2: ป้ายช่องทางติดต่อ & เรทราคา')" class="p-3 bg-pink-50/60 hover:bg-pink-100/80 rounded-xl cursor-pointer border border-pink-100 flex items-center gap-3 transition-colors">
-                        <div class="w-12 h-12 rounded-lg bg-pink-200 overflow-hidden flex-shrink-0">
-                            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=200&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-800">ป้ายช่องทางติดต่อ & เรทราคา</p>
-                            <span class="text-[10px] text-pink-500">มินิมอล มีเลเยอร์น่ารัก</span>
-                        </div>
-                    </div>
-
-                    <div onclick="setModalImg('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&auto=format&fit=crop&q=80', 'ตัวอย่างที่ 3: โลโก้และลายน้ำกราฟิก')" class="p-3 bg-pink-50/60 hover:bg-pink-100/80 rounded-xl cursor-pointer border border-pink-100 flex items-center gap-3 transition-colors">
-                        <div class="w-12 h-12 rounded-lg bg-pink-200 overflow-hidden flex-shrink-0">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=200&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-800">โลโก้ & ลายน้ำกราฟิก</p>
-                            <span class="text-[10px] text-pink-500">มีเอกลักษณ์ คมชัด</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-pink-50 p-4 rounded-2xl border border-pink-200 flex items-center justify-between">
-                <span class="text-xs text-pink-700 font-medium">สนใจสั่งทำป้ายลายน้ำหรือป้ายโปรโมชั่น?</span>
-                <button onclick="closeModal('galleryModal'); scrollToSection('contact');" class="bg-pink-500 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-pink-600 transition-colors">
-                    ติดต่อสั่งซื้อ
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL 2: CUSTOM WEB CALCULATOR MODAL -->
-    <div id="webCalcModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border-2 border-pink-200 relative">
-            <button onclick="closeModal('webCalcModal')" class="absolute top-4 right-4 w-9 h-9 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full flex items-center justify-center transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <h3 class="text-2xl font-bold text-gray-800 mb-1 flex items-center gap-2">
-                <i data-lucide="laptop" class="w-6 h-6 text-rose-500"></i>
-                ประเมินราคา Custom Web
-            </h3>
-            <p class="text-xs text-gray-500 mb-5">เลือกประเภทเว็บเพื่อประเมินราคาเบื้องต้น</p>
-
-            <form onsubmit="event.preventDefault(); calcWebPrice();" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">ประเภทเว็บไซต์ที่ต้องการ</label>
-                    <select id="webType" onchange="calcWebPrice()" class="w-full bg-pink-50/50 border border-pink-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-400">
-                        <option value="500">Bio Link / เว็บลิงก์รวมโซเชียล (เริ่มต้น 500.-)</option>
-                        <option value="1200">Portfolio Landing Page / เว็บผลงาน (เริ่มต้น 1,200.-)</option>
-                        <option value="2500">Custom Business Web / เว็บร้านค้าเต็มรูปแบบ (เริ่มต้น 2,500.-)</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">ออปชันเสริม</label>
-                    <div class="space-y-2">
-                        <label class="flex items-center gap-2 text-xs text-gray-600">
-                            <input type="checkbox" value="300" onchange="calcWebPrice()" class="web-opt rounded text-pink-500 focus:ring-pink-400">
-                            <span>ระบบแบบฟอร์มส่งข้อมูล / ติดต่อ (+300.-)</span>
-                        </label>
-                        <label class="flex items-center gap-2 text-xs text-gray-600">
-                            <input type="checkbox" value="500" onchange="calcWebPrice()" class="web-opt rounded text-pink-500 focus:ring-pink-400">
-                            <span>แอนิเมชันลูกเล่นพิเศษ Pastel Fur Effect (+500.-)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="bg-pink-100/80 p-4 rounded-2xl text-center border border-pink-200">
-                    <span class="text-xs text-pink-600 font-medium">ราคาประเมินเบื้องต้น</span>
-                    <p class="text-3xl font-extrabold text-pink-700 my-1"><span id="totalPrice">500</span> ฿</p>
-                    <span class="text-[10px] text-pink-500">*ราคาอาจปรับเปลี่ยนตามรายละเอียดขอบเขตงานจริง</span>
-                </div>
-
-                <button onclick="closeModal('webCalcModal'); scrollToSection('contact');" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-medium py-3 rounded-xl transition-colors text-sm flex items-center justify-center gap-2">
-                    <i data-lucide="message-square" class="w-4 h-4"></i>
-                    ทักแชทสั่งทำเว็บราคานี้
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL 3: FILE SUBMISSION MODAL -->
-    <div id="submitModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-pink-200 relative">
-            <button onclick="closeModal('submitModal')" class="absolute top-4 right-4 w-9 h-9 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full flex items-center justify-center transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <h3 class="text-2xl font-bold text-gray-800 mb-1 flex items-center gap-2">
-                <i data-lucide="upload-cloud" class="w-6 h-6 text-pink-500"></i>
-                ส่งผลงาน / ฝากไฟล์งาน
-            </h3>
-            <p class="text-xs text-gray-500 mb-4">ส่งรายละเอียดให้ทางร้าน Wannapa.studio</p>
-
-            <form onsubmit="handleFormSubmit(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">ชื่อลูกค้า / ชื่อร้านค้า *</label>
-                    <input type="text" required placeholder="เช่น คุณเมย์ ร้าน Pastel Shop" class="w-full bg-pink-50/50 border border-pink-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-400">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">ช่องทางติดต่อกลับ (Line ID / FB) *</label>
-                    <input type="text" required placeholder="เช่น @line_id หรือ FB Name" class="w-full bg-pink-50/50 border border-pink-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-400">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">ลิงก์ผลงาน / ลิงก์ไดรฟ์ฝากไฟล์ *</label>
-                    <input type="url" required placeholder="https://drive.google.com/..." class="w-full bg-pink-50/50 border border-pink-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-400">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">หมายเหตุเพิ่มเติม</label>
-                    <textarea rows="2" placeholder="รายละเอียดฝากงาน..." class="w-full bg-pink-50/50 border border-pink-200 rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-400"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 rounded-xl transition-colors text-sm flex items-center justify-center gap-2 shadow-md shadow-pink-200">
-                    <i data-lucide="send" class="w-4 h-4"></i>
-                    ยืนยันการส่งข้อมูล
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL 4: ADMIN GROUPS MODAL -->
-    <div id="groupModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-pink-200 relative">
-            <button onclick="closeModal('groupModal')" class="absolute top-4 right-4 w-9 h-9 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full flex items-center justify-center transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <h3 class="text-2xl font-bold text-gray-800 mb-1 flex items-center gap-2">
-                <i data-lucide="users" class="w-6 h-6 text-rose-500"></i>
-                กลุ่มที่แอดมินดูแล
-            </h3>
-            <p class="text-xs text-gray-500 mb-4">เข้าร่วมกลุ่มสังคมเพื่อติดตามอัปเดตงานล่าสุด</p>
-
-            <div class="space-y-3">
-                <a href="https://line.me" target="_blank" class="p-3 bg-pink-50 hover:bg-pink-100 rounded-2xl border border-pink-200 flex items-center justify-between transition-colors group">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-pink-200 text-pink-700 flex items-center justify-center font-bold text-sm">
-                            G1
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-gray-800">กลุ่มแจกบอร์ด & กราฟิกฟรี</p>
-                            <span class="text-[10px] text-pink-500">สมาชิก 1,200+ คน</span>
-                        </div>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-5 h-5 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-
-                <a href="https://facebook.com" target="_blank" class="p-3 bg-rose-50 hover:bg-rose-100 rounded-2xl border border-rose-200 flex items-center justify-between transition-colors group">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-rose-200 text-rose-700 flex items-center justify-center font-bold text-sm">
-                            G2
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-gray-800">กลุ่มซื้อขายงานป้าย & เว็บไซต์</p>
-                            <span class="text-[10px] text-rose-500">สมาชิก 3,500+ คน</span>
-                        </div>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-5 h-5 text-rose-400 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- NOTIFICATION TOAST -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-gray-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
-        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
-        <span id="toastMsg" class="text-xs font-medium">คัดลอกข้อความสำเร็จ!</span>
-    </div>
-
+    <!-- Initialize Icons -->
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
-
-        // Scroll to Section Helper
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Copy Line ID Function
-        function copyLineId(text) {
-            const tempInput = document.createElement('input');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-
-            showToast('คัดลอก Line ID: ' + text + ' แล้ว!');
-        }
-
-        // Show Toast Helper
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMsg');
-            toastMsg.innerText = message;
-            
-            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-            }, 3000);
-        }
-
-        // Modal Open/Close Logic
-        function openGalleryModal(index) {
-            document.getElementById('galleryModal').classList.remove('hidden');
-        }
-
-        function openWebCalcModal() {
-            document.getElementById('webCalcModal').classList.remove('hidden');
-            calcWebPrice();
-        }
-
-        function openSubmitModal() {
-            document.getElementById('submitModal').classList.remove('hidden');
-        }
-
-        function showGroupModal() {
-            document.getElementById('groupModal').classList.remove('hidden');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-        }
-
-        // Gallery Image Switcher
-        function setModalImg(url, title) {
-            document.getElementById('modalGalleryImg').src = url;
-        }
-
-        // Web Price Calculator Logic
-        function calcWebPrice() {
-            const basePrice = parseInt(document.getElementById('webType').value) || 0;
-            let optionsTotal = 0;
-            const checkboxes = document.querySelectorAll('.web-opt:checked');
-            checkboxes.forEach(cb => {
-                optionsTotal += parseInt(cb.value);
-            });
-            document.getElementById('totalPrice').innerText = (basePrice + optionsTotal).toLocaleString();
-        }
-
-        // Handle Form Submission
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            closeModal('submitModal');
-            showToast('ส่งข้อมูลและไฟล์งานเรียบร้อยแล้ว ขอบคุณค่ะ! 💕');
-        }
     </script>
 </body>
 </html>
