@@ -12,18 +12,112 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        * {
+            font-family: 'Mitr', sans-serif !important;
+        }
+
         body {
-            font-family: 'Mitr', sans-serif;
             background-color: #fcf1f5;
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(253, 226, 236, 0.9) 0%, transparent 60%),
                 radial-gradient(circle at 10% 30%, rgba(254, 215, 226, 0.6) 0%, transparent 40%),
                 radial-gradient(circle at 90% 70%, rgba(252, 231, 243, 0.6) 0%, transparent 40%);
             background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Pastel Pink Cat Fur Hair Texture Banner (เนียนกลืนกับฉากหลัง) */
+        /* Floating Animated Clouds Background */
+        .clouds-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 100px;
+            filter: blur(8px);
+            opacity: 0.8;
+            box-shadow: 0 8px 25px rgba(244, 114, 182, 0.15);
+            animation: floatCloud 25s infinite linear;
+        }
+
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 50%;
+        }
+
+        .cloud1 {
+            width: 180px;
+            height: 60px;
+            top: 10%;
+            left: -200px;
+            animation-duration: 35s;
+            animation-delay: 0s;
+        }
+        .cloud1::before { width: 80px; height: 80px; top: -35px; left: 25px; }
+        .cloud1::after { width: 60px; height: 60px; top: -25px; right: 25px; }
+
+        .cloud2 {
+            width: 240px;
+            height: 75px;
+            top: 35%;
+            left: -260px;
+            animation-duration: 45s;
+            animation-delay: 10s;
+            opacity: 0.6;
+        }
+        .cloud2::before { width: 100px; height: 100px; top: -45px; left: 35px; }
+        .cloud2::after { width: 80px; height: 80px; top: -35px; right: 35px; }
+
+        .cloud3 {
+            width: 200px;
+            height: 65px;
+            top: 65%;
+            left: -220px;
+            animation-duration: 38s;
+            animation-delay: 5s;
+            opacity: 0.7;
+        }
+        .cloud3::before { width: 90px; height: 90px; top: -40px; left: 30px; }
+        .cloud3::after { width: 70px; height: 70px; top: -30px; right: 30px; }
+
+        .cloud4 {
+            width: 150px;
+            height: 50px;
+            top: 85%;
+            left: -180px;
+            animation-duration: 30s;
+            animation-delay: 18s;
+            opacity: 0.5;
+        }
+        .cloud4::before { width: 65px; height: 65px; top: -30px; left: 20px; }
+        .cloud4::after { width: 50px; height: 50px; top: -20px; right: 20px; }
+
+        @keyframes floatCloud {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(calc(100vw + 300px)) translateY(-15px);
+            }
+            100% {
+                transform: translateX(calc(100vw + 300px)) translateY(0);
+            }
+        }
+
+        /* Pastel Pink Cat Fur Hair Texture Banner */
         .cat-fur-banner {
             background: 
                 radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(252, 231, 243, 0.5) 100%),
@@ -38,7 +132,6 @@
             border: 3px solid rgba(255, 255, 255, 0.85);
         }
 
-        /* หัวข้อ Wannapa.studio ใหญ่ คมชัด มีมิติ */
         .cat-fur-title-text {
             color: #ffffff;
             text-shadow: 
@@ -76,18 +169,24 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between text-pink-950 antialiased">
 
+    <!-- FLOATING CLOUDS LAYER -->
+    <div class="clouds-container">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+    </div>
+
     <!-- HEADER SECTION -->
-    <header class="relative pt-8 pb-10 px-4 text-center overflow-hidden">
+    <header class="relative pt-8 pb-10 px-4 text-center overflow-hidden z-10">
         <div class="max-w-3xl mx-auto relative z-10">
             
-            <!-- แบนเนอร์หัวข้อ Wannapa.studio ปรับตามสั่ง (ใหญ่ คมชัด เท็กซ์เจอร์ขนแมวกลืนกับฉากหลัง) -->
             <div class="cat-fur-banner rounded-3xl p-8 md:p-12 mb-6 transition-all duration-300">
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight cat-fur-title-text py-2">
                     Wannapa.studio
                 </h1>
             </div>
 
-            <!-- คำโปรยเดิม -->
             <div class="pastel-card rounded-2xl p-5 md:p-6 text-center max-w-2xl mx-auto">
                 <p class="text-sm md:text-base text-pink-800 leading-relaxed font-normal">
                     “ ลูกค้าท่านใดที่สงสัยสมารถติดต่อสอบถามส่วนตัวได้ค่ะ เเละสมารถส่งผลงานของทางร้านต่างๆได้ในนี้เลยค่ะ ”
@@ -97,18 +196,17 @@
     </header>
 
     <!-- BODY SECTION -->
-    <main class="max-w-5xl mx-auto px-4 pb-12 w-full flex-grow">
+    <main class="max-w-5xl mx-auto px-4 pb-12 w-full flex-grow relative z-10">
         
         <div class="flex items-center gap-3 mb-6">
             <div class="w-3 h-8 bg-pink-400 rounded-full"></div>
             <h2 class="text-2xl font-bold text-pink-900">บริการและผลงานของเรา</h2>
-            <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full font-medium border border-pink-200">Pastel Cute Style</span>
+            <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full font-medium border border-pink-200">✨ Pastel Cute Style</span>
         </div>
 
-        <!-- 2 Grid Blocks -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             
-            <!-- Block 1: Ex ป้าย (ตัวอย่างงาน) -->
+            <!-- Block 1: Ex ป้าย -->
             <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
@@ -126,7 +224,6 @@
                         รวบรวมผลงานออกแบบป้ายสินค้า ป้ายโปรโมชั่น ป้ายเครดิต และกราฟิกสไตล์พาสเทลน่ารัก สดใส เพิ่มยอดขายให้กับร้านค้าของคุณ
                     </p>
 
-                    <!-- Image Thumbnails Grid -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
                             <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 1">
@@ -139,7 +236,6 @@
                         </div>
                     </div>
 
-                    <!-- Tags -->
                     <div class="flex flex-wrap gap-1.5 mb-6">
                         <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#ป้ายลายน้ำ</span>
                         <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#ป้ายโปรโมชั่น</span>
@@ -147,14 +243,13 @@
                     </div>
                 </div>
 
-                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
                 <a href="YOUR_GOOGLE_DRIVE_BANNER_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
                     <i data-lucide="eye" class="w-4 h-4"></i>
                     ดูตัวอย่างผลงานทั้งหมด
                 </a>
             </div>
 
-            <!-- Block 2: Custom web (คัสตอมเว็บ) -->
+            <!-- Block 2: Custom web -->
             <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
@@ -172,7 +267,6 @@
                         ตัวอย่างเว็บไซต์คัสตอมที่เราออกแบบ รับทำเว็บบอร์ด เว็บลิงก์ชีวประวัติ (Bio) หน้าโปรไฟล์ และเว็บร้านค้าออนไลน์ สไตล์หวานพาสเทล
                     </p>
 
-                    <!-- Image Thumbnails Grid -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 1">
@@ -185,7 +279,6 @@
                         </div>
                     </div>
 
-                    <!-- Tags -->
                     <div class="flex flex-wrap gap-1.5 mb-6">
                         <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#เว็บไซต์ร้านค้า</span>
                         <span class="text-[11px] bg-pink-50 text-pink-600 px-2.5 py-0.5 rounded-md font-medium border border-pink-200">#คัสตอมพอร์ต</span>
@@ -193,7 +286,6 @@
                     </div>
                 </div>
 
-                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
                 <a href="YOUR_GOOGLE_DRIVE_WEB_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
                     <i data-lucide="eye" class="w-4 h-4"></i>
                     ดูตัวอย่างเว็บไซต์ทั้งหมด
@@ -202,7 +294,7 @@
 
         </div>
 
-        <!-- QUEUE CHECK SECTION (เช็คคิวงาน / ชีทงาน) -->
+        <!-- QUEUE CHECK SECTION -->
         <div class="pastel-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-pink-100/90 via-pink-50/80 to-pink-100/90 border-2 border-pink-300">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
@@ -228,8 +320,8 @@
 
     </main>
 
-    <!-- FOOTER SECTION (ช่องทางติดต่อ) -->
-    <footer class="bg-white/80 backdrop-blur-md border-t-2 border-pink-200 pt-10 pb-8 px-4 mt-auto">
+    <!-- FOOTER SECTION -->
+    <footer class="bg-white/80 backdrop-blur-md border-t-2 border-pink-200 pt-10 pb-8 px-4 mt-auto relative z-10">
         <div class="max-w-4xl mx-auto text-center">
             
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 text-xs font-semibold mb-3">
@@ -241,10 +333,8 @@
             </h3>
             <p class="text-pink-600 text-sm mb-8">สามารถทักสอบถาม ยินดีให้คำปรึกษาตลอดเวลาค่ะ 💕</p>
 
-            <!-- Contact Buttons Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 
-                <!-- Facebook -->
                 <a href="YOUR_FACEBOOK_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
@@ -258,7 +348,6 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
                 </a>
 
-                <!-- Line Official -->
                 <a href="YOUR_LINE_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
@@ -272,7 +361,6 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
                 </a>
 
-                <!-- Group Admin -->
                 <a href="YOUR_GROUP_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
@@ -294,7 +382,6 @@
         </div>
     </footer>
 
-    <!-- Initialize Icons -->
     <script>
         lucide.createIcons();
     </script>
