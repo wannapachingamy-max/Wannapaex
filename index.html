@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wannapa.studio - สตูดิโอดีไซน์งานป้ายเเละเว็บคัสตอม</title>
+    <title>Wannapa.studio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -37,7 +37,6 @@
             box-shadow: 0 10px 30px rgba(244, 114, 182, 0.25);
         }
 
-        /* Fur strands animation simulation */
         .cat-fur-text {
             background: linear-gradient(180deg, #ffffff 0%, #ffe4e6 40%, #fbcfe8 100%);
             -webkit-background-clip: text;
@@ -46,19 +45,6 @@
                     drop-shadow(0px 1px 2px rgba(255, 255, 255, 0.8));
             position: relative;
             display: inline-block;
-        }
-
-        .cat-fur-text::after {
-            content: "Wannapa.studio";
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            background: linear-gradient(45deg, #f472b6, #fb7185);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: blur(4px);
-            opacity: 0.7;
         }
 
         .fur-badge {
@@ -76,8 +62,8 @@
         }
 
         .pastel-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(244, 114, 182, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(244, 114, 182, 0.18);
             border-color: #f472b6;
         }
 
@@ -89,40 +75,27 @@
         }
 
         .btn-pastel:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.6);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.5);
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between text-pink-950 antialiased">
 
     <!-- HEADER SECTION -->
-    <header class="relative pt-12 pb-16 px-4 text-center overflow-hidden">
-        <!-- Floating Decorative Element -->
-        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-full max-w-4xl flex justify-between px-8 opacity-40 pointer-events-none">
-            <i data-lucide="sparkles" class="w-8 h-8 text-pink-400 animate-pulse"></i>
-            <i data-lucide="heart" class="w-6 h-6 text-pink-300 animate-bounce"></i>
-            <i data-lucide="sparkles" class="w-10 h-10 text-pink-400 animate-pulse"></i>
-        </div>
-
+    <header class="relative pt-10 pb-12 px-4 text-center overflow-hidden">
         <div class="max-w-3xl mx-auto relative z-10">
             <!-- Fur Header Container -->
             <div class="cat-fur-texture rounded-3xl p-8 mb-6 border-4 border-white/60">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full fur-badge mb-3">
-                    <i data-lucide="sparkles" class="w-4 h-4 text-pink-500"></i>
-                    <span class="text-xs font-medium text-pink-700 tracking-wider">WELCOME TO OUR STUDIO</span>
-                </div>
-                
-                <!-- Main Title with Pastel Pink Fur Texture -->
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-mali tracking-tight py-2 cat-fur-text drop-shadow-md">
+                <h1 class="text-4xl md:text-6xl font-bold font-mali tracking-tight py-2 cat-fur-text drop-shadow-md">
                     Wannapa.studio
                 </h1>
             </div>
 
-            <!-- Tagline Card -->
+            <!-- คำโปรยเดิม -->
             <div class="fur-badge rounded-2xl p-5 md:p-6 text-center max-w-2xl mx-auto">
                 <p class="text-sm md:text-base text-pink-800 leading-relaxed font-normal">
-                    “ ลูกค้าท่านใดที่สงสัยสามารถติดต่อสอบถามส่วนตัวได้ค่ะ และสามารถส่งผลงานของทางร้านต่างๆ ได้ในนี้เลยค่ะ ”
+                    “ ลูกค้าท่านใดที่สงสัยสมารถติดต่อสอบถามส่วนตัวได้ค่ะ เเละสมารถส่งผลงานของทางร้านต่างๆได้ในนี้เลยค่ะ ”
                 </p>
             </div>
         </div>
@@ -179,21 +152,21 @@
                     </div>
                 </div>
 
-                <!-- Direct Google Drive Link Button -->
+                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
                 <a href="YOUR_GOOGLE_DRIVE_BANNER_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
-                    <i data-lucide="folder-open" class="w-4 h-4"></i>
-                    ดูตัวอย่างผลงานป้ายทั้งหมด (Google Drive)
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                    ดูตัวอย่างผลงานทั้งหมด
                 </a>
             </div>
 
-            <!-- Block 2: Custom web (คัสตอมเว็บ) -->
+            <!-- Block 2: Custom web (คัสตอมเว็บ) -> ปรับให้เป็นเเบบเดียวกับงานป้ายตามรูปวงสีแดง -->
             <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-semibold px-3 py-1 bg-pink-100 text-pink-600 rounded-full flex items-center gap-1">
-                            <i data-lucide="laptop" class="w-3.5 h-3.5"></i> Web Portfolio
+                            <i data-lucide="globe" class="w-3.5 h-3.5"></i> Web Portfolio
                         </span>
-                        <i data-lucide="globe" class="w-5 h-5 text-pink-400"></i>
+                        <i data-lucide="laptop" class="w-5 h-5 text-pink-400"></i>
                     </div>
 
                     <h3 class="text-2xl font-bold text-pink-900 mb-2 font-mali flex items-center gap-2">
@@ -225,16 +198,16 @@
                     </div>
                 </div>
 
-                <!-- Direct Google Drive Link Button -->
+                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
                 <a href="YOUR_GOOGLE_DRIVE_WEB_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
-                    <i data-lucide="folder-open" class="w-4 h-4"></i>
-                    ดูตัวอย่างเว็บไซต์ทั้งหมด (Google Drive)
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                    ดูตัวอย่างเว็บไซต์ทั้งหมด
                 </a>
             </div>
 
         </div>
 
-        <!-- QUEUE CHECK SECTION (เช็คคิวงาน / ชีทงาน) -->
+        <!-- QUEUE CHECK SECTION -> ปรับแก้ตามรูปวงสีน้ำเงิน (เช็คคิวงาน / ชีทงาน) -->
         <div class="pastel-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-pink-100/90 via-pink-50/80 to-pink-100/90 border-2 border-pink-300">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
@@ -252,7 +225,7 @@
                 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                     <a href="YOUR_GOOGLE_SHEET_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel py-3.5 px-6 rounded-2xl font-medium text-center flex items-center justify-center gap-2 whitespace-nowrap">
                         <i data-lucide="external-link" class="w-4 h-4"></i>
-                        เปิดดูชีทงาน (Google Sheet)
+                        เปิดดูชีทงาน
                     </a>
                 </div>
             </div>
@@ -277,13 +250,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 
                 <!-- Facebook -->
-                <a href="https://facebook.com" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                <a href="YOUR_FACEBOOK_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
                         </div>
                         <div class="text-left">
-                            <div class="text-xs text-pink-500 font-medium">Facebook Page</div>
+                            <div class="text-xs text-pink-500 font-medium">Facebook :</div>
                             <div class="text-sm font-bold text-pink-900">Wannapa.studio</div>
                         </div>
                     </div>
@@ -291,13 +264,13 @@
                 </a>
 
                 <!-- Line Official -->
-                <a href="https://line.me" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                <a href="YOUR_LINE_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
                             <i data-lucide="message-circle" class="w-5 h-5"></i>
                         </div>
                         <div class="text-left">
-                            <div class="text-xs text-pink-500 font-medium">Line Official</div>
+                            <div class="text-xs text-pink-500 font-medium">Line officscial :</div>
                             <div class="text-sm font-bold text-pink-900">@wannapa.studio</div>
                         </div>
                     </div>
@@ -305,14 +278,14 @@
                 </a>
 
                 <!-- Group Admin -->
-                <a href="#" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                <a href="YOUR_GROUP_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
                             <i data-lucide="users" class="w-5 h-5"></i>
                         </div>
                         <div class="text-left">
-                            <div class="text-xs text-pink-500 font-medium">กลุ่มที่เเอดมินดูเเล</div>
-                            <div class="text-sm font-bold text-pink-900">เข้ากลุ่มอัปเดตงาน</div>
+                            <div class="text-xs text-pink-500 font-medium">กลุ่มที่เเอดมินดูเเล :</div>
+                            <div class="text-sm font-bold text-pink-900">กลุ่มลูกค้า Wannapa</div>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
@@ -320,10 +293,8 @@
 
             </div>
 
-            <!-- Copyright -->
-            <div class="pt-6 border-t border-pink-100 text-xs text-pink-400 flex flex-col sm:flex-row items-center justify-between gap-2">
-                <span>© 2026 Wannapa.studio. All rights reserved.</span>
-                <span class="font-mali flex items-center gap-1">Crafted with <i data-lucide="heart" class="w-3 h-3 text-pink-500 fill-pink-500"></i> Pastel Cute Style</span>
+            <div class="pt-6 border-t border-pink-100 text-xs text-pink-400 flex items-center justify-center">
+                <span>© Wannapa.studio. All rights reserved.</span>
             </div>
         </div>
     </footer>
