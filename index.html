@@ -88,13 +88,16 @@
             100% { transform: translateX(100vw); }
         }
 
-        /* Wannapa.studio Title Styling (ไม่มีกรอบสี่เหลี่ยม) */
+        /* Wannapa.studio Title Styling (เท็กซ์เจอร์ขนแมว + ตัวหนังสือสีชมพูหวานฟู) */
         .cat-fur-title-text {
-            color: #f43f5e;
-            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 40%, #be123c 100%);
+            background: 
+                repeating-radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8) 0px, transparent 1px, transparent 3px),
+                repeating-radial-gradient(circle at 80% 70%, rgba(244, 114, 182, 0.9) 0px, transparent 2px, transparent 4px),
+                linear-gradient(135deg, #f472b6 0%, #fb7185 40%, #e11d48 100%);
+            background-blend-mode: overlay, soft-light, normal;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 4px 10px rgba(244, 114, 182, 0.3));
+            filter: drop-shadow(0 4px 12px rgba(244, 114, 182, 0.45));
             letter-spacing: -0.02em;
         }
 
@@ -190,7 +193,7 @@
                 <span>เปิดรับออเดอร์งานออกแบบ / คิวงานว่างพร้อมทำ</span>
             </div>
 
-            <!-- ส่วนหัวข้อ: มีรูปภาพโลโก้ IMG_2374.jpeg และชื่อร้าน (ไม่มีกรอบสี่เหลี่ยมแล้ว) -->
+            <!-- ส่วนหัวข้อ: มีรูปภาพโลโก้ IMG_2374.jpeg และชื่อร้าน -->
             <div class="flex flex-col items-center justify-center mb-6">
                 <!-- รูปภาพโลโก้หน้าชื่อร้าน -->
                 <div class="relative mb-4 group">
@@ -203,7 +206,7 @@
                     />
                 </div>
 
-                <!-- ชื่อร้าน Wannapa.studio ตัวใหญ่ เด่นชัด แบบไม่มีกรอบ -->
+                <!-- ชื่อร้าน Wannapa.studio ตัวใหญ่ สีชมพูขนแมวนุ่มฟู -->
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight cat-fur-title-text py-1">
                     Wannapa.studio
                 </h1>
@@ -248,16 +251,16 @@
                         รวบรวมผลงานออกแบบป้ายสินค้า ป้ายโปรโมชั่น ป้ายเครดิต และกราฟิกสไตล์พาสเทลน่ารัก สดใส เพิ่มยอดขายให้กับร้านค้าของคุณ
                     </p>
 
-                    <!-- Image Thumbnails Grid -->
+                    <!-- Image Thumbnails Grid (อัปเดตเป็นชื่อรูปภาพของคุณแล้ว) -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
-                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 1">
+                            <img src="ไม่มีชื่อ 139_20260923092255.png" class="w-full h-full object-cover" alt="Ex ป้าย 1" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=60';">
                         </div>
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
-                            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 2">
+                            <img src="ไม่มีชื่อ 280_20260912105338.png" class="w-full h-full object-cover" alt="Ex ป้าย 2" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&auto=format&fit=crop&q=60';">
                         </div>
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 3">
+                            <img src="ไม่มีชื่อ 292_20260912105430.png" class="w-full h-full object-cover" alt="Ex ป้าย 3" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60';">
                         </div>
                     </div>
 
