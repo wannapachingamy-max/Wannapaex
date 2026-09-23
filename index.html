@@ -4,208 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wannapa.studio</title>
-
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <!-- Google Font: Mitr -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        /* Apply Mitr font universally */
-        * {
-            font-family: 'Mitr', sans-serif !important;
-        }
-
-        /* Page Background Styling */
         body {
-            background-color: #fce7f3;
+            font-family: 'Mitr', sans-serif;
+            background-color: #fcf1f5;
             background-image: 
-                radial-gradient(circle at 50% 10%, rgba(253, 226, 236, 0.9) 0%, transparent 60%),
-                radial-gradient(circle at 10% 40%, rgba(254, 215, 226, 0.8) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(252, 231, 243, 0.8) 0%, transparent 50%);
+                radial-gradient(circle at 50% 0%, rgba(253, 226, 236, 0.9) 0%, transparent 60%),
+                radial-gradient(circle at 10% 30%, rgba(254, 215, 226, 0.6) 0%, transparent 40%),
+                radial-gradient(circle at 90% 70%, rgba(252, 231, 243, 0.6) 0%, transparent 40%);
             background-attachment: fixed;
-            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* -------------------------------------------------------------
-           BACKGROUND FLOATING CLOUDS ANIMATION
-           ------------------------------------------------------------- */
-        .cloud-wrapper {
+        /* Continuous Floating Clouds Background */
+        .cloud-container {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 1; /* Below content, above background gradient */
+            z-index: 0;
             overflow: hidden;
         }
 
-        /* Cloud Base Shape */
-        .svg-cloud {
+        .cloud {
             position: absolute;
-            fill: rgba(255, 255, 255, 0.85);
-            filter: drop-shadow(0 8px 16px rgba(244, 114, 182, 0.25));
-            will-change: transform;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 100px;
+            box-shadow: 0 8px 25px rgba(244, 114, 182, 0.15);
+            animation: floatCloud linear infinite;
         }
 
-        /* Cloud Animation Speeds and Positions */
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+        }
+
         .cloud-1 {
-            width: 220px;
-            top: 8%;
-            animation: floatRight 30s linear infinite;
-        }
-
-        .cloud-2 {
-            width: 280px;
-            top: 28%;
-            animation: floatRight 42s linear infinite;
-            animation-delay: -12s;
+            width: 200px;
+            height: 60px;
+            top: 10%;
+            animation-duration: 35s;
             opacity: 0.9;
         }
+        .cloud-1::before { width: 90px; height: 90px; top: -45px; left: 30px; }
+        .cloud-1::after { width: 70px; height: 70px; top: -30px; right: 30px; }
 
-        .cloud-3 {
-            width: 240px;
-            top: 55%;
-            animation: floatRight 36s linear infinite;
-            animation-delay: -20s;
-            opacity: 0.85;
-        }
-
-        .cloud-4 {
-            width: 320px;
-            top: 75%;
-            animation: floatRight 48s linear infinite;
-            animation-delay: -5s;
-            opacity: 0.95;
-        }
-
-        .cloud-5 {
-            width: 190px;
-            top: 42%;
-            animation: floatRight 25s linear infinite;
-            animation-delay: -18s;
+        .cloud-2 {
+            width: 260px;
+            height: 75px;
+            top: 35%;
+            animation-duration: 48s;
+            animation-delay: -15s;
             opacity: 0.8;
         }
+        .cloud-2::before { width: 110px; height: 110px; top: -55px; left: 40px; }
+        .cloud-2::after { width: 85px; height: 85px; top: -35px; right: 40px; }
 
-        @keyframes floatRight {
-            0% {
-                transform: translateX(-350px) translateY(0px);
-            }
-            50% {
-                transform: translateX(50vw) translateY(-12px);
-            }
-            100% {
-                transform: translateX(calc(100vw + 350px)) translateY(0px);
-            }
+        .cloud-3 {
+            width: 180px;
+            height: 50px;
+            top: 65%;
+            animation-duration: 40s;
+            animation-delay: -7s;
+            opacity: 0.85;
+        }
+        .cloud-3::before { width: 80px; height: 80px; top: -40px; left: 25px; }
+        .cloud-3::after { width: 60px; height: 60px; top: -25px; right: 25px; }
+
+        @keyframes floatCloud {
+            0% { transform: translateX(-300px); }
+            100% { transform: translateX(100vw); }
         }
 
-        /* -------------------------------------------------------------
-           HEADER BANNER TEXTURE & CARDS
-           ------------------------------------------------------------- */
-        /* Pastel Pink Cat Fur Hair Texture Banner */
-        .cat-fur-banner {
-            background: 
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(252, 231, 243, 0.5) 100%),
-                repeating-radial-gradient(circle at 30% 30%, rgba(244, 114, 182, 0.15) 0px, transparent 2px, transparent 5px),
-                repeating-radial-gradient(circle at 70% 70%, rgba(251, 113, 133, 0.12) 0px, transparent 2px, transparent 6px),
-                linear-gradient(135deg, #fbcfe8 0%, #f472b6 50%, #fb7185 100%);
-            background-blend-mode: overlay, soft-light, soft-light, normal;
-            position: relative;
-            box-shadow: 
-                0 15px 35px rgba(244, 114, 182, 0.25),
-                inset 0 0 25px rgba(255, 255, 255, 0.85);
-            border: 3.5px solid rgba(255, 255, 255, 0.9);
-        }
-
-        /* Header title text with glowing effect */
+        /* Wannapa.studio Title Styling (ไม่มีกรอบสี่เหลี่ยม) */
         .cat-fur-title-text {
-            color: #ffffff;
-            text-shadow: 
-                0 3px 6px rgba(190, 24, 93, 0.35),
-                0 6px 18px rgba(225, 29, 72, 0.3),
-                0 0 25px rgba(255, 255, 255, 0.75);
+            color: #f43f5e;
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 40%, #be123c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 10px rgba(244, 114, 182, 0.3));
             letter-spacing: -0.02em;
         }
 
-        /* Glassmorphism Pastel Cards */
+        /* Pulsing Status LED Indicator (ไฟกระพริบ) */
+        .status-dot {
+            position: relative;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #22c55e;
+        }
+
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #22c55e;
+            opacity: 0.75;
+            animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.6); opacity: 0.9; }
+            50% { opacity: 0.4; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        /* Animations for Blocks */
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.25s; }
+        .delay-3 { animation-delay: 0.4s; }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .pastel-card {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(12px);
             border: 2px solid #fbcfe8;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .pastel-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(244, 114, 182, 0.22);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 32px rgba(244, 114, 182, 0.2);
             border-color: #f472b6;
         }
 
-        /* Interactive Pastel Gradient Buttons */
         .btn-pastel {
             background: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
             color: white;
-            box-shadow: 0 4px 14px rgba(244, 114, 182, 0.38);
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(244, 114, 182, 0.35);
+            transition: all 0.25s ease;
         }
 
         .btn-pastel:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(244, 114, 182, 0.5);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between text-pink-950 antialiased">
+<body class="min-h-screen flex flex-col justify-between text-pink-950 antialiased relative">
 
-    <!-- FLOATING CLOUDS LAYER -->
-    <div class="cloud-wrapper">
-        <!-- SVG Cloud 1 -->
-        <svg class="svg-cloud cloud-1" viewBox="0 0 24 24">
-            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-        </svg>
-
-        <!-- SVG Cloud 2 -->
-        <svg class="svg-cloud cloud-2" viewBox="0 0 24 24">
-            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-        </svg>
-
-        <!-- SVG Cloud 3 -->
-        <svg class="svg-cloud cloud-3" viewBox="0 0 24 24">
-            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-        </svg>
-
-        <!-- SVG Cloud 4 -->
-        <svg class="svg-cloud cloud-4" viewBox="0 0 24 24">
-            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-        </svg>
-
-        <!-- SVG Cloud 5 -->
-        <svg class="svg-cloud cloud-5" viewBox="0 0 24 24">
-            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-        </svg>
+    <!-- Floating Background Clouds -->
+    <div class="cloud-container">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
     </div>
 
     <!-- HEADER SECTION -->
-    <header class="relative pt-8 pb-10 px-4 text-center overflow-hidden z-10">
-        <div class="max-w-3xl mx-auto relative z-10">
+    <header class="relative pt-8 pb-6 px-4 text-center z-10 animate-fade-up">
+        <div class="max-w-3xl mx-auto relative">
             
-            <!-- Header Banner with Pink Fur Texture -->
-            <div class="cat-fur-banner rounded-3xl p-8 md:p-12 mb-6 transition-all duration-300">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight cat-fur-title-text py-2">
+            <!-- Online Status Indicator Header -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-pink-200 shadow-sm text-xs font-medium text-pink-700 mb-6 backdrop-blur-md">
+                <span class="status-dot"></span>
+                <span>เปิดรับออเดอร์งานออกแบบ / คิวงานว่างพร้อมทำ</span>
+            </div>
+
+            <!-- ส่วนหัวข้อ: มีรูปภาพโลโก้ IMG_2374.jpeg และชื่อร้าน (ไม่มีกรอบสี่เหลี่ยมแล้ว) -->
+            <div class="flex flex-col items-center justify-center mb-6">
+                <!-- รูปภาพโลโก้หน้าชื่อร้าน -->
+                <div class="relative mb-4 group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-pink-300 to-rose-300 rounded-full blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
+                    <img 
+                        src="IMG_2374.jpeg" 
+                        alt="Wannapa Studio Logo" 
+                        class="relative w-28 h-28 md:w-36 md:h-36 object-cover rounded-full border-4 border-white shadow-md hover:scale-105 transition-transform duration-300"
+                        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=60';"
+                    />
+                </div>
+
+                <!-- ชื่อร้าน Wannapa.studio ตัวใหญ่ เด่นชัด แบบไม่มีกรอบ -->
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight cat-fur-title-text py-1">
                     Wannapa.studio
                 </h1>
             </div>
 
-            <!-- Subtitle Text Container -->
-            <div class="pastel-card rounded-2xl p-5 md:p-6 text-center max-w-2xl mx-auto">
+            <!-- คำโปรยเดิม -->
+            <div class="pastel-card rounded-2xl p-5 md:p-6 text-center max-w-2xl mx-auto shadow-sm">
                 <p class="text-sm md:text-base text-pink-800 leading-relaxed font-normal">
                     “ ลูกค้าท่านใดที่สงสัยสมารถติดต่อสอบถามส่วนตัวได้ค่ะ เเละสมารถส่งผลงานของทางร้านต่างๆได้ในนี้เลยค่ะ ”
                 </p>
@@ -213,20 +218,19 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT SECTION -->
+    <!-- BODY SECTION -->
     <main class="max-w-5xl mx-auto px-4 pb-12 w-full flex-grow relative z-10">
         
-        <!-- Section Title -->
-        <div class="flex items-center gap-3 mb-6">
+        <div class="flex items-center gap-3 mb-6 animate-fade-up delay-1">
             <div class="w-3 h-8 bg-pink-400 rounded-full"></div>
             <h2 class="text-2xl font-bold text-pink-900">บริการและผลงานของเรา</h2>
-            <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full font-medium border border-pink-200">✨ Pastel Cute Style</span>
+            <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full font-medium border border-pink-200">Pastel Cute Style</span>
         </div>
 
-        <!-- Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- 2 Grid Blocks -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 animate-fade-up delay-2">
             
-            <!-- Block 1: Ex ป้าย (Showcase Banner Portfolio) -->
+            <!-- Block 1: Ex ป้าย (ตัวอย่างงาน) -->
             <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
@@ -246,13 +250,13 @@
 
                     <!-- Image Thumbnails Grid -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
-                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
                             <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 1">
                         </div>
-                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
                             <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 2">
                         </div>
-                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
                             <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Ex ป้าย 3">
                         </div>
                     </div>
@@ -265,14 +269,14 @@
                     </div>
                 </div>
 
-                <!-- Google Drive Link Button -->
-                <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
+                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
+                <a href="YOUR_GOOGLE_DRIVE_BANNER_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
                     <i data-lucide="eye" class="w-4 h-4"></i>
                     ดูตัวอย่างผลงานทั้งหมด
                 </a>
             </div>
 
-            <!-- Block 2: Custom web (Web Portfolio) -->
+            <!-- Block 2: Custom web (คัสตอมเว็บ) -->
             <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
@@ -292,13 +296,13 @@
 
                     <!-- Image Thumbnails Grid -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
-                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 1">
                         </div>
-                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
                             <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 2">
                         </div>
-                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200">
+                        <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
                             <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 3">
                         </div>
                     </div>
@@ -311,8 +315,8 @@
                     </div>
                 </div>
 
-                <!-- Google Drive Link Button -->
-                <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
+                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
+                <a href="YOUR_GOOGLE_DRIVE_WEB_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
                     <i data-lucide="eye" class="w-4 h-4"></i>
                     ดูตัวอย่างเว็บไซต์ทั้งหมด
                 </a>
@@ -321,12 +325,13 @@
         </div>
 
         <!-- QUEUE CHECK SECTION (เช็คคิวงาน / ชีทงาน) -->
-        <div class="pastel-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-pink-100/90 via-pink-50/80 to-pink-100/90 border-2 border-pink-300">
+        <div class="pastel-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-pink-100/90 via-pink-50/80 to-pink-100/90 border-2 border-pink-300 animate-fade-up delay-3">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
-                    <span class="text-xs font-semibold px-3 py-1 bg-pink-200 text-pink-700 rounded-full inline-flex items-center gap-1 mb-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-pink-200/80 text-pink-700 rounded-full text-xs font-semibold mb-3">
+                        <span class="status-dot"></span>
                         <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i> Live Order Tracker
-                    </span>
+                    </div>
                     <h3 class="text-2xl md:text-3xl font-bold text-pink-900 mb-2">
                         เช็คคิวงาน / ชีทงาน
                     </h3>
@@ -336,7 +341,7 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                    <a href="https://docs.google.com/spreadsheets" target="_blank" rel="noopener noreferrer" class="btn-pastel py-3.5 px-6 rounded-2xl font-medium text-center flex items-center justify-center gap-2 whitespace-nowrap">
+                    <a href="YOUR_GOOGLE_SHEET_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel py-3.5 px-6 rounded-2xl font-medium text-center flex items-center justify-center gap-2 whitespace-nowrap">
                         <i data-lucide="external-link" class="w-4 h-4"></i>
                         เปิดดูชีทงาน
                     </a>
@@ -362,11 +367,12 @@
             <!-- Contact Buttons Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 
-                <!-- Facebook Link -->
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                <!-- Facebook -->
+                <a href="YOUR_FACEBOOK_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all relative">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center relative">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
+                            <span class="status-dot absolute -top-1 -right-1"></span>
                         </div>
                         <div class="text-left">
                             <div class="text-xs text-pink-500 font-medium">Facebook :</div>
@@ -376,25 +382,27 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
                 </a>
 
-                <!-- Line Official Link -->
-                <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                <!-- Line Official -->
+                <a href="YOUR_LINE_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center relative">
                             <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            <span class="status-dot absolute -top-1 -right-1"></span>
                         </div>
                         <div class="text-left">
-                            <div class="text-xs text-pink-500 font-medium">Line official :</div>
+                            <div class="text-xs text-pink-500 font-medium">Line officscial :</div>
                             <div class="text-sm font-bold text-pink-900">@wannapa.studio</div>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-pink-400 group-hover:translate-x-1 transition-transform"></i>
                 </a>
 
-                <!-- Admin Group Link -->
-                <a href="https://facebook.com/groups" target="_blank" rel="noopener noreferrer" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
+                <!-- Group Admin -->
+                <a href="YOUR_GROUP_LINK" target="_blank" class="pastel-card rounded-2xl p-4 flex items-center justify-between group hover:bg-pink-50 transition-all">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center relative">
                             <i data-lucide="users" class="w-5 h-5"></i>
+                            <span class="status-dot absolute -top-1 -right-1"></span>
                         </div>
                         <div class="text-left">
                             <div class="text-xs text-pink-500 font-medium">กลุ่มที่เเอดมินดูเเล :</div>
@@ -412,11 +420,9 @@
         </div>
     </footer>
 
+    <!-- Initialize Icons -->
     <script>
-        // Initialize icons after DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-        });
+        lucide.createIcons();
     </script>
 </body>
 </html>
