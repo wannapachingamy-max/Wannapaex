@@ -88,7 +88,7 @@
             100% { transform: translateX(100vw); }
         }
 
-        /* Wannapa.studio Title Styling (เท็กซ์เจอร์ขนแมว + ตัวหนังสือสีชมพูหวานฟู) */
+        /* Wannapa.studio Title Styling */
         .cat-fur-title-text {
             background: 
                 repeating-radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8) 0px, transparent 1px, transparent 3px),
@@ -101,7 +101,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* Pulsing Status LED Indicator (ไฟกระพริบ) */
+        /* Pulsing Status LED Indicator */
         .status-dot {
             position: relative;
             display: inline-block;
@@ -166,15 +166,53 @@
             color: white;
             box-shadow: 0 4px 14px rgba(244, 114, 182, 0.35);
             transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-pastel:hover {
             transform: scale(1.03);
             box-shadow: 0 8px 24px rgba(244, 114, 182, 0.5);
         }
+
+        /* Cute Page Overlay Loading Effect */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(253, 242, 248, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner-cute {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #fbcfe8;
+            border-top: 5px solid #f472b6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between text-pink-950 antialiased relative">
+
+    <!-- Cute Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="spinner-cute mb-4"></div>
+        <p class="text-pink-600 font-bold text-lg animate-pulse">กำลังวาร์ปไปหน้าเว็บนะคะ... 💕✨</p>
+    </div>
 
     <!-- Floating Background Clouds -->
     <div class="cloud-container">
@@ -193,9 +231,8 @@
                 <span>เปิดรับออเดอร์งานออกแบบ / คิวงานว่างพร้อมทำ</span>
             </div>
 
-            <!-- ส่วนหัวข้อ: มีรูปภาพโลโก้ IMG_2374.jpeg และชื่อร้าน -->
+            <!-- ส่วนหัวข้อ -->
             <div class="flex flex-col items-center justify-center mb-6">
-                <!-- รูปภาพโลโก้หน้าชื่อร้าน -->
                 <div class="relative mb-4 group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-pink-300 to-rose-300 rounded-full blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
                     <img 
@@ -206,7 +243,6 @@
                     />
                 </div>
 
-                <!-- ชื่อร้าน Wannapa.studio ตัวใหญ่ สีชมพูขนแมวนุ่มฟู -->
                 <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight cat-fur-title-text py-1">
                     Wannapa.studio
                 </h1>
@@ -272,14 +308,14 @@
                     </div>
                 </div>
 
-                <!-- ปุ่มลิงก์เด้งไปที่เว็บตัวอย่างงานป้าย -->
-                <a href="https://wannapachingamy-max.github.io/Listexop/" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
-                    <i data-lucide="eye" class="w-4 h-4"></i>
-                    ดูตัวอย่างผลงานทั้งหมด
+                <!-- ปุ่มลิงก์พร้อมเอฟเฟกต์โหลดน่ารัก -->
+                <a href="https://wannapachingamy-max.github.io/Listexop/" onclick="openWithLoading(event, this.href)" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
+                    <i data-lucide="eye" class="w-4 h-4 btn-icon"></i>
+                    <span class="btn-text">ดูตัวอย่างผลงานทั้งหมด</span>
                 </a>
             </div>
 
-            <!-- Block 2: Custom web (คัสตอมเว็บ) -->
+            <!-- Block 2: Custom web (คัสตอมเว็บ - อัปเดตรูปภาพใหม่ 3 รูป) -->
             <div class="pastel-card rounded-3xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
@@ -297,16 +333,16 @@
                         ตัวอย่างเว็บไซต์คัสตอมที่เราออกแบบ รับทำเว็บบอร์ด เว็บลิงก์ชีวประวัติ (Bio) หน้าโปรไฟล์ และเว็บร้านค้าออนไลน์ สไตล์หวานพาสเทล
                     </p>
 
-                    <!-- Image Thumbnails Grid -->
+                    <!-- Image Thumbnails Grid (อัปเดตเป็น IMG_2417.png, IMG_2418.png, IMG_2420.png) -->
                     <div class="grid grid-cols-3 gap-2 mb-4">
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 1">
+                            <img src="IMG_2417.png" class="w-full h-full object-cover" alt="Custom Web 1" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&auto=format&fit=crop&q=60';">
                         </div>
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
-                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 2">
+                            <img src="IMG_2418.png" class="w-full h-full object-cover" alt="Custom Web 2" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=300&auto=format&fit=crop&q=60';">
                         </div>
                         <div class="aspect-square rounded-xl bg-pink-100 overflow-hidden shadow-sm border border-pink-200 hover:scale-105 transition-transform duration-200">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60" class="w-full h-full object-cover" alt="Custom Web 3">
+                            <img src="IMG_2420.png" class="w-full h-full object-cover" alt="Custom Web 3" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=300&auto=format&fit=crop&q=60';">
                         </div>
                     </div>
 
@@ -318,10 +354,10 @@
                     </div>
                 </div>
 
-                <!-- ปุ่มลิงก์เด้งเข้า Google Drive -->
-                <a href="YOUR_GOOGLE_DRIVE_WEB_LINK" target="_blank" rel="noopener noreferrer" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
-                    <i data-lucide="eye" class="w-4 h-4"></i>
-                    ดูตัวอย่างเว็บไซต์ทั้งหมด
+                <!-- ปุ่มลิงก์พร้อมเอฟเฟกต์โหลดน่ารัก -->
+                <a href="YOUR_GOOGLE_DRIVE_WEB_LINK" onclick="openWithLoading(event, this.href)" class="btn-pastel w-full py-3 px-4 rounded-2xl font-medium text-center flex items-center justify-center gap-2">
+                    <i data-lucide="eye" class="w-4 h-4 btn-icon"></i>
+                    <span class="btn-text">ดูตัวอย่างเว็บไซต์ทั้งหมด</span>
                 </a>
             </div>
 
@@ -344,10 +380,10 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                    <!-- ปุ่มลิงก์เด้งไปที่เว็บเช็คคิวงาน -->
-                    <a href="https://wannapachingamy-max.github.io/Qchex/" target="_blank" rel="noopener noreferrer" class="btn-pastel py-3.5 px-6 rounded-2xl font-medium text-center flex items-center justify-center gap-2 whitespace-nowrap">
-                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                        เปิดดูชีทงาน
+                    <!-- ปุ่มลิงก์พร้อมเอฟเฟกต์โหลดน่ารัก -->
+                    <a href="https://wannapachingamy-max.github.io/Qchex/" onclick="openWithLoading(event, this.href)" class="btn-pastel py-3.5 px-6 rounded-2xl font-medium text-center flex items-center justify-center gap-2 whitespace-nowrap">
+                        <i data-lucide="external-link" class="w-4 h-4 btn-icon"></i>
+                        <span class="btn-text">เปิดดูชีทงาน</span>
                     </a>
                 </div>
             </div>
@@ -424,9 +460,23 @@
         </div>
     </footer>
 
-    <!-- Initialize Icons -->
+    <!-- Script for Lucide Icons & Loading Function -->
     <script>
         lucide.createIcons();
+
+        function openWithLoading(event, url) {
+            event.preventDefault();
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+            setTimeout(() => {
+                window.open(url, '_blank');
+                if (overlay) {
+                    overlay.style.display = 'none';
+                }
+            }, 600);
+        }
     </script>
 </body>
 </html>
